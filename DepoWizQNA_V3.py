@@ -74,13 +74,13 @@ def csv_load(file):
 
 
 def embed(text):
-    embedding = openai.Embedding.create(
-        input=text, 
-        engine=OPENAI_ENGINE)["data"][0]["embedding"]
-    # embedding = get_embedding(
-    #     text,
-    #     engine="text-embedding-ada-002"
-    # )
+    # embedding = openai.Embedding.create(
+    #     input=text, 
+    #     engine=OPENAI_ENGINE)["data"][0]["embedding"]
+    embedding = get_embedding(
+        text,
+        engine="text-embedding-ada-002"
+    )
     return embedding
 
 
