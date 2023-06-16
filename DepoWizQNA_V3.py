@@ -355,14 +355,14 @@ def extract_name_from_csv(df):
 def app2():
 
     # Sidebar
-    drop = st.sidebar.button("Drop Collection")
-    if drop:
-        collectionsList = fetch_documents()
-        for collection in collectionsList:
-            client.delete_collection(collection_name=collection)
-            with open('collection.txt', 'w') as file:
-                file.truncate(0)
-        st.success(f"The file collections has been cleared.")
+    # drop = st.sidebar.button("Drop Collection")
+    # if drop:
+    #     collectionsList = fetch_documents()
+    #     for collection in collectionsList:
+    #         client.delete_collection(collection_name=collection)
+    #         with open('collection.txt', 'w') as file:
+    #             file.truncate(0)
+    #     st.success(f"The file collections has been cleared.")
 
 
     st.sidebar.markdown("---")
