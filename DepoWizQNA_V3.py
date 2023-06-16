@@ -27,6 +27,7 @@ from nltk.corpus import stopwords
 
  
 nltk.download('stopwords')
+nltk.download('punkt')
 
 # Global Parameters *********************************************
 
