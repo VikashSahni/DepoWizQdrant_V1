@@ -26,6 +26,7 @@ f_pen = "0.0"
 p_pen = "0.0"
  
 nltk.download('stopwords')
+nltk.download('punkt')
 
 def get_completions(prompt, temp='0.0',top_p='0.75'):
     url = "https://chat-gpt-a1.openai.azure.com/openai/deployments/DanielChatGPT/chat/completions?api-version=2023-03-15-preview"
