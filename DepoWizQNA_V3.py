@@ -76,9 +76,9 @@ def csv_load(file):
 def embed(text):
     embedding = openai.Embedding.create(
         input=text,
-        model="text-embedding-ada-002"
+        engine="text-embedding-ada-002"
     )
-    embeddings = response['data'][0]['embedding']
+    embeddings = embedding['data'][0]['embedding']
     return embeddings
 
 
