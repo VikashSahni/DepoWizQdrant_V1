@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 import re
 
-from openai.embeddings_utils import get_embedding
+# from openai.embeddings_utils import get_embedding
 
 from docx.shared import Inches
 import io
@@ -73,19 +73,19 @@ def csv_load(file):
 
 
 
-# def embed(text):
-#     embedding = openai.Embedding.create(
-#         input=text, 
-#         engine=OPENAI_ENGINE)["data"][0]["embedding"]
-#     # embedding = get_embedding(
-#     #     text,
-#     #     engine="text-embedding-ada-002"
-#     # )
-#     return embedding
-
 def embed(text):
-    embedding = openai.Embed.from_prompt(text, engine=OPENAI_ENGINE)
-    return embedding["choices"][0]["embedding"]
+    embedding = openai.Embedding.create(
+        input=text, 
+        engine=OPENAI_ENGINE)["data"][0]["embedding"]
+    # embedding = get_embedding(
+    #     text,
+    #     engine="text-embedding-ada-002"
+    # )
+    return embedding
+
+# def embed(text):
+#     embedding = openai.Embed.from_prompt(text, engine=OPENAI_ENGINE)
+#     return embedding["choices"][0]["embedding"]
 
 
 
