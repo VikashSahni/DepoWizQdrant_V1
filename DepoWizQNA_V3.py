@@ -160,15 +160,15 @@ def normalize_text(text):
 
 
 
-def append_name_to_file(file_name, name):
-    with open(file_name, 'a') as file:
-        file.write(name + '\n')
+# def append_name_to_file(file_name, name):
+#     with open(file_name, 'a') as file:
+#         file.write(name + '\n')
 
 
 
 def save_to_database(dfName):
     collection = make_valid_partition_name(dfName)
-    append_name_to_file("collection.txt", collection)
+    # append_name_to_file("collection.txt", collection)
 
     client.recreate_collection(
     collection_name=collection,
@@ -196,10 +196,14 @@ def save_to_database(dfName):
 
 
 
+# def fetch_documents():
+#     with open("collection.txt", 'r') as file:
+#         names = file.read().splitlines()
+#     return names
+
 def fetch_documents():
-    with open("collection.txt", 'r') as file:
-        names = file.read().splitlines()
-    return names
+    collections_response = [name.name for name in client.get_collections().collections]
+    return collections_response
 
 
 
