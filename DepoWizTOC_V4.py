@@ -14,6 +14,8 @@ import numpy as np
 from DepoWizQNA_V3 import make_valid_partition_name, save_to_database, extract_pdf_text_to_dataframe
 import nltk
 from nltk.corpus import stopwords
+from builtins import PendingDeprecationWarning
+
 
 
 # My API Key
