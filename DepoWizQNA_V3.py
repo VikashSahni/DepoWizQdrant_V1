@@ -8,7 +8,7 @@ import PyPDF2
 import pandas as pd
 import numpy as np
 import re
-
+from builtins import PendingDeprecationWarning
 # from openai.embeddings_utils import get_embedding
 
 from docx.shared import Inches
