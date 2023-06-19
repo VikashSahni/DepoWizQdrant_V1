@@ -3,6 +3,6 @@ openai==0.27.6
 PyPDF2==3.0.1
 pandas==1.5.3
 numpy==1.24.2
-docx==4.9.2
+docx==0.2.4
 qdrant-client==1.2.0
 nltk==3.8.1
