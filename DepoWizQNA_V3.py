@@ -384,8 +384,8 @@ def app2():
 
 
     # Main screen
-    st.title("TOCDOC")
-    st.subheader("Talk to Document: Question and Answering over Document")
+    st.title("Talk with your document")
+    # st.subheader("Talk to Document: Question and Answering over Document")
 
     with st.expander("Follow these steps to use the app"):
         # st.markdown(":")
