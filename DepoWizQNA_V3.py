@@ -252,25 +252,21 @@ def get_completions(prompt, temp='0.0',top_p='0.75'):
     return response
 
 
-
 def getAns(pdf_text, que, name):
-    data = {'messages': [{"role": "system", "content": f"""You are a deposition QnA bot,and based on the given deposition conversation text, you provide the best answer to the question asked by an attorney. witness name: {name}. Remember everywhere in the answer address the witness by their name. """},
+    data = {'messages': [{"role": "system", "content": f"""You are a deposition QnA bot,and based on the given deposition conversation text, you provide the best answer to the question asked by an attorney. Remember everywhere in the answer address the witness by their name, witness name: {name}. """},
 {"role": "user", "content": f"""
 You are a Deposition Document QnA bot.
-You are provided with the question asked by the attorney and the deposition document conversation text delimited by ``` .
-Your task is to review the deposition text and based on you creativity and understanding you have to provide the best possible answer to the given question.
-Below each answer mention the page number and line number of the discussion enclosed in parenthesis ().
-
-Important NOTE: If answer cannot be found then just return *** .
+You will be provided with the Deposition document text and question asked by an attorney delimited by triple backtics ```.
+If the answer to the question can be generated from depositon text,
+then review the deposition text and based on you creativity and understanding generate the best possible answer to the given question. Below each answer mention the page number and line number of the discussion enclosed in parenthesis ().
+If the answer cannot be generated from the deposition text,
+then simply write \"Answer cannot be generated. *** \"
 
 Provided Details:
 ```
 Question by an Attorney: {que}
 Deposition document text: {pdf_text}```
 """}]}
-    
-# If the answer cannot be found in Depostion document text then just return "NA".
-# (NOTE: If you couldnt find the answer in given text then just return " NA ".)
 
     timer = 10
     for _ in range(3):
@@ -282,6 +278,36 @@ Deposition document text: {pdf_text}```
             time.sleep(timer)
             timer += 10
     return answers
+
+# def getAns(pdf_text, que, name):
+#     data = {'messages': [{"role": "system", "content": f"""You are a deposition QnA bot,and based on the given deposition conversation text, you provide the best answer to the question asked by an attorney. witness name: {name}. Remember everywhere in the answer address the witness by their name. """},
+# {"role": "user", "content": f"""
+# You are a Deposition Document QnA bot.
+# You are provided with the question asked by the attorney and the deposition document conversation text delimited by ``` .
+# Your task is to review the deposition text and based on you creativity and understanding you have to provide the best possible answer to the given question.
+# Below each answer mention the page number and line number of the discussion enclosed in parenthesis ().
+
+# Important NOTE: If answer cannot be found then just return *** .
+
+# Provided Details:
+# ```
+# Question by an Attorney: {que}
+# Deposition document text: {pdf_text}```
+# """}]}
+    
+# # If the answer cannot be found in Depostion document text then just return "NA".
+# # (NOTE: If you couldnt find the answer in given text then just return " NA ".)
+
+#     timer = 10
+#     for _ in range(3):
+#         try:
+#             answers = get_completions(data)
+#             break
+#         except Exception as e:
+#             st.write(f"Retrying after {timer} seconds...")
+#             time.sleep(timer)
+#             timer += 10
+#     return answers
 
 
 
