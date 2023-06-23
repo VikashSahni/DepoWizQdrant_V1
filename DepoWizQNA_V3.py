@@ -256,16 +256,107 @@ def getAns(pdf_text, que, name):
     data = {'messages': [{"role": "system", "content": f"""You are a deposition QnA bot,and based on the given deposition conversation text, you provide the best answer to the question asked by an attorney. Remember everywhere in the answer address the witness by their name, witness name: {name}. """},
 {"role": "user", "content": f"""
 You are a Deposition Document QnA bot.
-You will be provided with the Deposition document text and question asked by an attorney delimited by triple backtics ```.
-If the answer to the question can be generated from depositon text,
-then review the deposition text and based on you creativity and understanding generate the best possible answer to the given question. Below each answer mention the page number and line number of the discussion enclosed in parenthesis ().
+Your task is to generate and give answer to the given question in a consistent style.
+You are provided with the Deposition document text and question asked by an attorney.
+Review the deposition text and based on you creativity and understanding, If the answer to the question can be generated from depositon text,
+then generate the best possible answer to the given question. Below each answer mention the page number and line number of the discussion enclosed in parenthesis ().
 If the answer cannot be generated from the deposition text,
 then simply write \"Answer cannot be generated. *** \"
+Generate answer in a consistent style.
 
-Provided Details:
+<text>: ``` *** ROUGH DRAFT.  NOT CERTIFIED. ***
+  1 R OUGH DRAFT DISCLAIMER
+  2
+  3 California Code  of Civil Procedur e Section 2025.540 
+  4 states:  "When prepared as a r ough draft t ranscript, the 
+  5 transcript of the deposition may not be certified and 
+  6 may not be used, cite d, or transcribed as the certified 
+  7 transcript of the deposition proceedings.  The rough 
+  8 draft transcript m ay not be cited  or used in any way or 
+  9 at any time to rebut or contradic t the certified 
+ 10 transcript of depo sition proceedi ngs as provi ded by the 
+ 11 depositio n officer."
+ 12
+ 13 This is an uncertified r ough draft that  has been 
+ 14 prepared in rough edi t form at counsel' s request and for 
+ 15 counsel's conve nience.  No represent ation is made about 
+ 16 its accuracy.
+ 17 18
+ 19
+ 20 VIDEOGRAPHER:  We are now on t he record.  This 
+ 21 is the videotaped deposition of Pene lope Bake r, volume 
+ 22 three.  Toda y's date is April 14t h, 2023.  Time is 
+ 23 9:13 a.m. Pacific.  A ll attorneys pr esent will be 
+ 24 indicated on th e stenographic record.  Please  remember 
+ 25 to unmute if you need to speak du ring the dep osition.  
+*** ROUGH DRAFT.  NOT CERTIFIED. ***1
+*** ROUGH DRAFT.  NOT CERTIFIED. ***
+  1 The court will now remind t he witness they  are still 
+  2 under oath.  3 PENELOPE BAKER, 
+  4 the Plaintiff, called for continu ed examination by the 
+  5 Defendants, bei ng first reminded to tel l the truth, the 
+  6 whole truth, an d nothing but the truth, testified as 
+  7 follows:
+  8 MR. LOOMIS:  This is John Loom is.  It's my 
+  9 understanding that we have sti pulation for a court 
+ 10 reporter to a effe ct that the obj ection of on e defendant 
+ 11 or even of a plaintiff I gu ess is of al l subject to 
+ 12 objecting out l ater and the same as true f or motions to 
+ 13 strike and r eservations of rights.  Is that correct, 
+ 14 sir. 15 MR. FULLE R:    Great.
+ 16 MR. LOOMIS:  Okay.  That's Bre tt.  All right.
+ 17 EXAMINATION 18 BY MR. LOOMIS:
+ 19 Q. All right.  Dr. Ba ker, how are you feeling 
+ 20 today? 21 A. Generally  not well.
+ 22 Q. How are y ou feeling comp ared to about a week 
+ 23 ago when we last talked?
+ 24 A. Not as well.  I 'm having more shortness of 
+ 25 breath and more pleurisy.
+*** ROUGH DRAFT.  NOT CERTIFIED. ***2
+ ```
+
+<Question>: give medical history of witness.
+ 
+<Answer>: Penelope Baker had a medical visit in April of 2023, which was for a cancer treatment for her mesothelioma with her oncologist, Dr. Khattab. The treatment that she received was an IV infusion with Pemetrexed, Dexamethasone, and Aloxi. She is due for another infusion on May the 9th, which will also be the same kind of infusion. Before each treatment, blood work is done at the same office and takes around 30 minutes resulting in the complete blood count. The results for the complete blood count come back in 30 minutes, and the chemistry follows that. In terms of testing, the witness is undergoing a chemistry profile, and the results usually get results within a couple of days, which is done at Sonora Quest Laboratory(Page 1, line 4-25, Page 2, line 1-25).
+ 
+<text>: ``` *** ROUGH DRAFT.  NOT CERTIFIED. ***
+  1 A. At that time he  was methodi cally disabled.
+  2 Q. When did he bec ome medicall y disabled?
+  3 A. To the best of my recollection  196 -- 
+  4 1969-1970.
+  5 Q. And how did he bec ome medically disabled, if 
+  6 you know?
+  7 A. He had a heart attack and d amage from the heart 
+  8 attack.    9 Q. Okay.  So it's my understanding that he died in 
+ 10 age 70 in 1994.  That would suggest that he was born in 
+ 11 about 1924.  Does tha t sound a bout right?
+ 12 A. Correct.
+ 13 Q. Therefore he was a round 31 when y ou were born 
+ 14 and so if my math is correct, and  it often is not, that 
+ 15 would mean that he  had this heart at tack at a time when 
+ 16 you were about 14 or 15; is th at correct?
+ 17 A. Correct.  Pretty close.
+ 18 Q. So he would hav e then been approx imately 45 or 
+ 19 so when he had his he art attack; Is that correct?
+ 20 A. I'm not sure  about the age, but it was in that 
+ 21 time time  frame, yes.
+ 22 Q. Okay.  Had he been  experiencing to your 
+ 23 knowledge or un derstanding any problems re lated to his 
+ 24 heart prior to tha t heart attack?
+ 25 A. As a child, a very young child, he had 
+*** ROUGH DRAFT.  NOT CERTIFIED. ***25
+ ```
+
+<Question>: What did Ms.Yu said about PEAKS?
+
+<Answer>: Answer cannot be generated. ***
+
+<text>: ``` {pdf_text} 
 ```
-Question by an Attorney: {que}
-Deposition document text: {pdf_text}```
+<Question>: {que}
+
+<Answer>: 
+
 """}]}
 
     timer = 10
@@ -278,6 +369,36 @@ Deposition document text: {pdf_text}```
             time.sleep(timer)
             timer += 10
     return answers
+
+
+
+
+# def getAns(pdf_text, que, name):
+#     data = {'messages': [{"role": "system", "content": f"""You are a deposition QnA bot,and based on the given deposition conversation text, you provide the best answer to the question asked by an attorney. Remember everywhere in the answer address the witness by their name, witness name: {name}. """},
+# {"role": "user", "content": f"""
+# You are a Deposition Document QnA bot.
+# You will be provided with the Deposition document text and question asked by an attorney delimited by triple backtics ```.
+# If the answer to the question can be generated from depositon text,
+# then review the deposition text and based on you creativity and understanding generate the best possible answer to the given question. Below each answer mention the page number and line number of the discussion enclosed in parenthesis ().
+# If the answer cannot be generated from the deposition text,
+# then simply write \"Answer cannot be generated. *** \"
+
+# Provided Details:
+# ```
+# Question by an Attorney: {que}
+# Deposition document text: {pdf_text}```
+# """}]}
+
+#     timer = 10
+#     for _ in range(3):
+#         try:
+#             answers = get_completions(data)
+#             break
+#         except Exception as e:
+#             st.write(f"Retrying after {timer} seconds...")
+#             time.sleep(timer)
+#             timer += 10
+#     return answers
 
 # def getAns(pdf_text, que, name):
 #     data = {'messages': [{"role": "system", "content": f"""You are a deposition QnA bot,and based on the given deposition conversation text, you provide the best answer to the question asked by an attorney. witness name: {name}. Remember everywhere in the answer address the witness by their name. """},
