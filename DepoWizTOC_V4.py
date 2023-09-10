@@ -19,7 +19,7 @@ from builtins import PendingDeprecationWarning
 
 
 # My API Key
-api_key = "c09f91126e51468d88f57cb83a63ee36"
+api_key = "YOUR_API_KEY"
 
 token = "50.0"
 temp = "0.0"
