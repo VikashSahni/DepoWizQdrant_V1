@@ -28,7 +28,7 @@ To get started with DepoWizQdrant, follow these steps:
 
 1. Clone this repository.
 2. Install the required dependencies using `pip install -r requirements.txt`.
-3. Run the app using `streamlit run app.py`.
+3. Run the app using `streamlit run DepoWizMVD_V2.py`.
 
 ## Usage
 
