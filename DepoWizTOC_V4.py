@@ -31,7 +31,7 @@ nltk.download('stopwords')
 nltk.download('punkt')
 
 def get_completions(prompt, temp='0.0',top_p='0.75'):
-    url = "https://chat-gpt-a1.openai.azure.com/openai/deployments/DanielChatGPT/chat/completions?api-version=2023-03-15-preview"
+    url = "AzureOpenAI_model_api"
     headers = {'Content-Type': 'application/json',
                'api-key': api_key,
                'max_tokens': str(token),
