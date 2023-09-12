@@ -36,8 +36,8 @@ nltk.download('punkt')
 FILE = ''
 DIMENSION = 1536  # Embeddings size
 # COLLECTION_NAME = 'Deposition_Docs'  # Collection name
-QDRANT_HOST = '4.157.146.99'  # Milvus server URI
-QDRANT_PORT = '6333'
+QDRANT_HOST = 'HOST'  # Qdrant server URI
+QDRANT_PORT = 'PORT'
 OPENAI_ENGINE = 'text-embedding-ada-002'  # Which engine to use
 
 openai.api_base = "https://chat-gpt-a1.openai.azure.com/"
@@ -49,11 +49,11 @@ openai.api_version = "2022-12-01" # manually added by Vikash Sahni
 
 # connecting to the server
 
-client = QdrantClient(host="4.157.146.99", port=6333)
+client = QdrantClient(host="HOST", port="PORT")
 
 
 # My API Key
-api_key = "c09f91126e51468d88f57cb83a63ee36"
+api_key = "API_KEY"
 
 
 token = "50.0"
@@ -227,7 +227,7 @@ def search(query,collection):
 
 
 def get_completions(prompt, temp='0.0',top_p='0.75'):
-    url = "https://chat-gpt-a1.openai.azure.com/openai/deployments/DanielChatGPT/chat/completions?api-version=2023-03-15-preview"
+    url = "AzureOpenAI_model_API"
     headers = {'Content-Type': 'application/json',
                'api-key': api_key,
                'max_tokens': str(token),
